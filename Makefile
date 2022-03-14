@@ -1,109 +1,112 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/03/14 13:39:50 by jaewpark          #+#    #+#              #
+#    Updated: 2022/03/14 17:41:16 by jaewpark         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = fractol
 
-# Compiling flags
-FLAGS = -Wall -Wextra -Werror -g
+CC = gcc
+RM = rm -f
+FLAGS = -Wall -Wextra -Werror
+MLX = -lmlx -framework OpenGL -framework AppKit
 
-# Folders
 SRC_DIR = ./srcs/
 OBJ_DIR = ./obj/
 INC_DIR = ./includes/
-LIBFT_DIR = ./libft/
 MINLBX_DIR = ./minilibx/
 
-# Source files and object files
-SRC_FILES = main.c draw.c fractals.c control.c
+SRC_FILES = color.c \
+			control_key.c \
+			control_mouse.c \
+			fern.c \
+			fractols.c \
+			info.c \
+			main.c \
+			render.c \
+
 OBJ_FILES = $(SRC_FILES:.c=.o)
 
-# Paths
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ = $(addprefix $(OBJ_DIR), $(OBJ_FILES))
-LIBFT = $(addprefix $(LIBFT_DIR), libft.a)
 MINLBX = $(addprefix $(MINLBX_DIR), libmlx.a)
 
-# Libft and Minilibx linkers
-LNK  = -L $(LIBFT_DIR) -lft -L $(MINLBX_DIR) \
-		-Ofast -lmlx -framework OpenGL -framework AppKit
-
 # all rule
-all: obj $(LIBFT) $(MINLBX) $(NAME)
+all: obj  $(MINLBX) $(NAME)
 
 obj:
 	@mkdir -p $(OBJ_DIR)
 $(OBJ_DIR)%.o:$(SRC_DIR)%.c
-	@gcc $(FLAGS) -I $(MINLBX_DIR) -I $(LIBFT_DIR) -I $(INC_DIR) -o $@ -c $<
-$(LIBFT):
-	@make -C $(LIBFT_DIR)
+	@gcc $(FLAGS) -I $(MINLBX_DIR) -I $(INC_DIR) -o $@ -c $<
 $(MINLBX):
 	@make -C $(MINLBX_DIR)
 
 # Compiling
 $(NAME): $(OBJ)
 	@clear
-	@echo "*:・ﾟ✧*:・ﾟ✧ Compiling.   *:・✧*:・✧"
+	@echo "\033[32m║▌│█║▌│ \033[0m\033[73m█║▌│█│║▌║▌│█║▌│█║▌│█│║▌║ \
+	\n𝙨𝙘𝙖𝙣𝙣𝙞𝙣𝙜 𝙘𝙤𝙙𝙚..."
 	@sleep 0.5
 	@clear
-	@echo "*:・ﾟ✧*:・ﾟ✧ Compiling..  *:・✧*:・✧"
+	@echo "\033[32m║▌│█║▌│ █║▌│█│║▌\033[0m\033[73m║▌│█║▌│█║▌│█│║▌║ \
+	\n𝙨𝙘𝙖𝙣𝙣𝙞𝙣𝙜 𝙘𝙤𝙙𝙚..."
 	@sleep 0.5
 	@clear
-	@echo "*:・ﾟ✧*:・ﾟ✧ Compiling... *:・✧*:・✧"
+	@echo "\033[32m║▌│█║▌│ █║▌│█│║▌║▌│█║▌│█\033[0m\033[73m║▌│█│║▌║ \
+	\n𝙨𝙘𝙖𝙣𝙣𝙞𝙣𝙜 𝙘𝙤𝙙𝙚..."
 	@sleep 0.5
 	@clear
-	@echo "*:・ﾟ✧*:・ﾟ✧ Compiling..  *:・✧*:・✧"
+	@echo "\033[32m║▌│█║▌│ █║▌│█│║▌║▌│█║▌│█║▌│█│║▌║\033[0m\033[73m \
+	\n𝙨𝙘𝙖𝙣𝙣𝙞𝙣𝙜 𝙘𝙤𝙙𝙚..."
 	@sleep 0.5
 	@clear
-	@echo "*:・ﾟ✧*:・ﾟ✧ Compiling.   *:・✧*:・✧"
+	@echo "\033[32m║▌│█║▌│ █║▌│█│║▌║▌│█║▌│█║▌│█│║▌║ \033[0m\033[33m \
+	\n𝙨𝙘𝙖𝙣𝙣𝙞𝙣𝙜 𝙘𝙤𝙙𝙚..."
 	@sleep 0.5
 	@clear
-	@gcc $(OBJ) $(LNK) -lm -o $(NAME)
-	@echo "*:・ﾟ✧*: $(NAME) generated *:・✧*:・✧"
+	@$(CC) $(FLAGS) $(MLX) -o $(NAME) $(OBJ)
+	@echo "═════════•°• $(NAME) generated •°•═════════"
 	@sleep 1
-	@echo 
-	@echo "Usage: ./fractol "
+	@echo
+	@echo "\033[01;31m⎹⎴⎴⎴⎴⎴⎴⎴⎴⎴⎴⎴⎴⎴⎴⎴⎴⎴⎴⎴⎴⎴⎴⎴⎴\
+	⎴⎴⎴⎴⎴⎴⎴⎴⎴⎸"
+	@echo "\033[01;31m⎹ \033[0m\033[07;37m   Fract-ol Menu              \
+	 \033[0m\033[01;31m ⎸"
+	@echo "\033[01;31m⎹ \033[0m\033[01;32m    ./fractol                 \
+	 \033[0m\033[01;31m ⎸"
+	@echo "\033[01;31m⎹⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵\
+	⎵⎵⎵⎵⎵⎵⎵⎵⎵⎸"
+	@echo
+	@echo "\033[07;37m    Fractol Usage                   \033[0m"
+	@echo "\033[01;36m   Keys  : [ESC]       -> Exit      \033[0m"
+	@echo "\033[01;36m   Keys  : [W, S]      -> Select      \033[0m"
+	@echo "\033[01;36m   Keys  : [R]         -> Random      \033[0m"
+	@echo "\033[01;36m   Keys  : [Enter]     -> Show Fract-ol\033[0m"
+	@echo "\033[01;36m   Keys  : [BACKSPACE] -> Show Menu\033[0m"
+	@echo "\033[01;36m   Keys  : [SPACE]     -> Colorize  \033[0m"
+	@echo "\033[01;36m   Mouse : [SCROLL]    -> Zoom      \033[0m"
+	@echo "\033[01;36m   Mouse : [R-Click]   -> Colorize \033[0m"
+	@echo "\033[01;36m   Mouse : [L-Click]   -> Freeze / Activate \033[0m"
 
 # clean rule
 clean:
 	@rm -Rf $(OBJ_DIR)
-	@make -C $(LIBFT_DIR) clean
 	@make -C $(MINLBX_DIR) clean
-	@echo " Objects removed!"
+	@echo "═════════•°• Objects generated •°•═════════"
 
 # fclean rule
 fclean: clean
 	@rm -f $(NAME)
-	@make -C $(LIBFT_DIR) fclean
-	@echo " $(NAME) removed! "
+	@echo "═════════•°• $(NAME) removed •°•═════════"
 
 # re rule
 re: fclean all
-
-# time for a coffee break
-coffee:
-	@clear
-	@echo ""
-	@echo "                   ("
-	@echo "	                     )     ("
-	@echo "               ___...(-------)-....___"
-	@echo '           .-""       )    (          ""-.'
-	@echo "      .-''''|-._             )         _.-|"
-	@echo '     /  .--.|   `""---...........---""`   |'
-	@echo "    /  /    |                             |"
-	@echo "    |  |    |                             |"
-	@echo "     \  \   |                             |"
-	@echo "      '\ '\ |                             |"
-	@echo "        '\ '|                             |"
-	@echo "        _/ /\                             /"
-	@echo "       (__/  \                           /"
-	@echo '    _..---""` \                         /`""---.._'
-	@echo " .-'           \                       /          '-."
-	@echo ":               '-.__             __.-'              :"
-	@echo ':                  ) ""---...---"" (                :'
-	@echo "\'._                '"--...___...--"'              _.'"
-	@echo '   \""--..__                              __..--""/'
-	@echo "     '._     """----.....______.....----"""         _.'"
-	@echo '         ""--..,,_____            _____,,..--"""'''
-	@echo '                      """------"""'
-	@sleep 2.5
-	@clear
 
 # phony
 .PHONY: all clean fclean re

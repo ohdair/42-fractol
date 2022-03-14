@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fern.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaewpark <jaewpark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 13:09:35 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/11 21:16:01 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/14 14:43:05 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	init_fern_fractal(t_fractol *f)
 
 void	fern_fractal(t_fractol *f)
 {
-	int iter;
+	int	iter;
+
 	iter = f->fractal.iteration;
 	while (iter > 0)
 	{
