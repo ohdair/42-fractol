@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 17:32:49 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/15 16:38:55 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/15 17:07:12 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,16 @@ void	more_key_control(int keycode, t_fractol *f)
 		f->fractal.type = f->info.select + 1;
 		if (f->fractal.type == 3)
 			init_fern_fractal(f);
-		if (f->fractal.type == 2 || f->fractal.type == 1)
+		if (f->fractal.type == 2)
+		{
+			f->formula = &mandelbrot;
 			initialize_limits(f);
+		}
+		if (f->fractal.type == 1)
+		{
+			f->formula = &julia;
+			initialize_limits(f);
+		}
 	}
 	if (keycode == KEY_BACKSPACE && f->fractal.type)
 	{

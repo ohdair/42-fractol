@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 20:43:07 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/15 16:45:55 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/15 19:20:10 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@
 # define WIN_WIDTH	1000
 # define WIN_HEIGHT	1000
 
+typedef struct s_coordinate
+{
+	double	re;
+	double	im;
+}t_coordinate;
+
 typedef struct s_mlx
 {
 	void	*init;
@@ -38,12 +44,10 @@ typedef struct s_type
 	int		depth;
 	int		iteration;
 	int		limit;
-	double	max_x;
-	double	max_y;
-	double	min_x;
-	double	min_y;
-	double	x;
-	double	y;
+	t_coordinate	max;
+	t_coordinate	min;
+	t_coordinate	c;
+	t_coordinate	cj;
 }t_type;
 
 typedef struct s_mouse
@@ -94,8 +98,10 @@ typedef struct s_fractol
 	t_image	image;
 	t_fern	fern;
 	t_info	info;
+	void	(*formula)(struct s_fractol *);
 }t_fractol;
 
+t_coordinate	redefine(double re, double im);
 void			my_mlx_pixel_put(t_fractol *f, int x, int y, int color);
 int				render_next_frame(t_fractol *f);
 
@@ -106,7 +112,7 @@ void			select_info_menu(t_fractol *f);
 void			draw_fractal(t_fractol *f);
 void			mandelbrot(t_fractol *f);
 void			julia(t_fractol *f);
-int				ft_square(int x);
+double			ft_square(double x);
 
 void			init_fern_fractal(t_fractol *f);
 void			fern_fractal(t_fractol *f);

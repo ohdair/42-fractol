@@ -6,11 +6,19 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 17:05:41 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/15 16:30:42 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/15 19:14:49 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+t_coordinate	redefine(double re, double im)
+{
+	t_coordinate	tmp;
+	tmp.re = re;
+	tmp.im = im;
+	return (tmp);
+}
 
 void	my_mlx_pixel_put(t_fractol *f, int x, int y, int color)
 {
