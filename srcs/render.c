@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 17:05:41 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/14 16:54:44 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/15 16:30:42 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	render_next_frame(t_fractol *f)
 	{
 		mlx_clear_window(f->mlx.init, f->mlx.win);
 		fern_fractal(f);
-		mlx_put_image_to_window(f->mlx.init, f->mlx.win, f->image.addr, 0, 0);
+		mlx_put_image_to_window(f->mlx.init, f->mlx.win, f->mlx.img, 0, 0);
 	}
 	return (0);
 }

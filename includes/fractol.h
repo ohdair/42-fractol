@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 20:43:07 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/14 16:52:45 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/15 16:45:55 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 
 # include "mlx.h"
 
-# define WIN_WIDTH			(1000)
-# define WIN_HEIGHT			(1000)
+# define WIN_WIDTH	1000
+# define WIN_HEIGHT	1000
 
 typedef struct s_mlx
 {
@@ -71,8 +71,8 @@ typedef struct s_color
 
 typedef struct s_fern
 {
-	int		x;
-	int		y;
+	double	x;
+	double	y;
 	int		random;
 }t_fern;
 
@@ -99,6 +99,7 @@ typedef struct s_fractol
 void			my_mlx_pixel_put(t_fractol *f, int x, int y, int color);
 int				render_next_frame(t_fractol *f);
 
+void			initialize_limits(t_fractol *f);
 void			add_info_menu(t_fractol *f);
 void			select_info_menu(t_fractol *f);
 

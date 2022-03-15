@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 13:09:35 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/14 14:43:05 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/15 16:49:10 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	init_fern_fractal(t_fractol *f)
 {
-	f->fractal.x = 0;
-	f->fractal.y = 0;
+	f->fractal.x = 0.0;
+	f->fractal.y = 0.0;
 	f->fractal.iteration = 11000;
 	f->color.red = 0;
 	f->color.green = 0;
 	f->color.blue = 0;
-	f->color.color = create_trgb(0, 0, 0, 0);
-	f->fern.x = 0;
-	f->fern.y = 0;
+	f->color.color = create_trgb(0, 0, 100, 0);
+	f->fern.x = 0.0;
+	f->fern.y = 0.0;
 }
 
 void	fern_fractal(t_fractol *f)
@@ -46,7 +46,7 @@ void	fern_create_pixels(t_fractol *f)
 	f->fern.random = rand() % 100;
 	if (f->fern.random == 0)
 	{
-		f->fern.x = 0;
+		f->fern.x = 0.0;
 		f->fern.y = 0.16 * f->fractal.y;
 	}
 	else if (f->fern.random >= 1 && f->fern.random <= 85)
