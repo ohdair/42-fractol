@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 20:43:07 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/15 19:20:10 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/16 15:45:50 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 
 # define WIN_WIDTH	1000
 # define WIN_HEIGHT	1000
+# define LIMIT	47
 
 typedef struct s_coordinate
 {
@@ -123,6 +124,7 @@ int				control_mouse(int mousecode, int x, int y, t_fractol *f);
 int				control_julia(int x, int y, t_fractol *f);
 
 int				create_trgb(int t, int red, int green, int blue);
+void			reset_background(t_fractol *f);
 void			rand_color(t_fractol *f);
 int				initialize_color(t_fractol *f);
 

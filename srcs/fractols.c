@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 21:01:01 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/15 19:23:49 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/16 15:39:36 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,15 @@ void	draw_fractal(t_fractol *f)
 {
 	int	x;
 	int	y;
-	t_coordinate	factor;
 
-	factor = redefine((f->fractal.max.re - f->fractal.min.re) / WIN_WIDTH, \
-				(f->fractal.max.im - f->fractal.min.im) / WIN_HEIGHT);
 	y = 0;
 	while (y < WIN_HEIGHT)
 	{
 		x = 0;
 		while (x < WIN_WIDTH)
 		{
-			f->fractal.c.im = f->fractal.max.im - y * factor.im;
-			f->fractal.c.re = f->fractal.max.re + x * factor.re;
+			f->fractal.c.re = ((x - WIN_WIDTH / 2) * 3.0 / WIN_WIDTH) - 0.5;
+			f->fractal.c.im = ((WIN_HEIGHT / 2) - y) * 2.0 / WIN_HEIGHT;
 			f->formula(f);
 			my_mlx_pixel_put(f, x, y, initialize_color(f));
 			x++;
@@ -49,7 +46,7 @@ void	julia(t_fractol *f)
 	z = redefine(f->fractal.c.re, f->fractal.c.im);
 	f->fractal.iteration = 0;
 	while (ft_square(z.re) + ft_square(z.im) <= 4 && \
-		f->fractal.iteration < f->fractal.limit)
+		f->fractal.iteration < LIMIT)
 	{
 		z = redefine(ft_square(z.re) - ft_square(z.im) + f->fractal.cj.re, \
 				2.0 * z.re * z.im + f->fractal.cj.im);
@@ -64,7 +61,7 @@ void	mandelbrot(t_fractol *f)
 	z = redefine(f->fractal.c.re, f->fractal.c.im);
 	f->fractal.iteration = 0;
 	while (ft_square(z.re) + ft_square(z.im) <= 4 && \
-		f->fractal.iteration < f->fractal.limit)
+		f->fractal.iteration < LIMIT)
 	{
 		z = redefine(ft_square(z.re) - ft_square(z.im) + f->fractal.c.re, \
 				2.0 * z.re * z.im + f->fractal.c.im);
