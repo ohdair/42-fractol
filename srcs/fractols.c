@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 21:01:01 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/16 15:39:36 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/16 20:43:56 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,27 @@ double	ft_square(double x)
 
 void	draw_fractal(t_fractol *f)
 {
-	int	x;
-	int	y;
+	int				x;
+	int				y;
+	t_coordinate	t;
 
+	t = f->fractal.center;
 	y = 0;
-	while (y < WIN_HEIGHT)
+	while (y < HEIGHT)
 	{
 		x = 0;
-		while (x < WIN_WIDTH)
+		while (x < WIDTH)
 		{
-			f->fractal.c.re = ((x - WIN_WIDTH / 2) * 3.0 / WIN_WIDTH) - 0.5;
-			f->fractal.c.im = ((WIN_HEIGHT / 2) - y) * 2.0 / WIN_HEIGHT;
+			f->fractal.c = redefine(\
+				t.re + (x - (WIDTH / 2)) * f->fractal.ratio / WIDTH, \
+				t.im + (y - (HEIGHT / 2)) * f->fractal.ratio / HEIGHT);
 			f->formula(f);
 			my_mlx_pixel_put(f, x, y, initialize_color(f));
 			x++;
 		}
 		y++;
 	}
-	mlx_put_image_to_window(f->mlx.init, f->mlx.win, f->mlx.img, 0 , 0);
+	mlx_put_image_to_window(f->mlx.init, f->mlx.win, f->mlx.img, 0, 0);
 }
 
 void	julia(t_fractol *f)

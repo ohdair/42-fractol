@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 19:35:30 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/15 18:50:07 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/16 18:29:12 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	main(void)
 		write(1, "Memory Allocation failed", 24);
 	f->fractal.type = 0;
 	f->mlx.init = mlx_init();
-	f->mlx.win = mlx_new_window(f->mlx.init, WIN_WIDTH, \
-			WIN_HEIGHT, "Fract-ol");
-	f->mlx.img = mlx_new_image(f->mlx.init, WIN_WIDTH, WIN_HEIGHT);
+	f->mlx.win = mlx_new_window(f->mlx.init, WIDTH, \
+			HEIGHT, "Fract-ol");
+	f->mlx.img = mlx_new_image(f->mlx.init, WIDTH, HEIGHT);
 	f->image.addr = mlx_get_data_addr(f->mlx.img, &(f->image.bits), \
 			&(f->image.size), &(f->image.endian));
 	mlx_hook(f->mlx.win, 2, 0, control_keys, f);

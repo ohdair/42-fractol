@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 17:05:41 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/15 19:14:49 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/16 20:43:07 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 t_coordinate	redefine(double re, double im)
 {
 	t_coordinate	tmp;
+
 	tmp.re = re;
 	tmp.im = im;
 	return (tmp);

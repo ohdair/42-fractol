@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 13:09:35 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/15 19:29:39 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/16 18:28:58 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	fern_fractal(t_fractol *f)
 	while (iter > 0)
 	{
 		fern_create_pixels(f);
-		my_mlx_pixel_put(f, 180 * f->fern.x + WIN_WIDTH / 2.4, \
-					WIN_HEIGHT - 100 * f->fern.y, f->color.color);
+		my_mlx_pixel_put(f, 180 * f->fern.x + WIDTH / 2.4, \
+					HEIGHT - 100 * f->fern.y, f->color.color);
 		f->fractal.c.re = f->fern.x;
 		f->fractal.c.im = f->fern.y;
 		iter--;

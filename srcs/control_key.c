@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 17:32:49 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/16 15:44:40 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/16 20:09:47 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,34 @@ void	more_key_control(int keycode, t_fractol *f)
 		}
 		if (f->fractal.type == 2)
 		{
-			f->formula = &mandelbrot;
 			initialize_limits(f);
+			f->formula = &mandelbrot;
 		}
 		if (f->fractal.type == 1)
 		{
-			f->formula = &julia;
 			initialize_limits(f);
+			f->formula = &julia;
 		}
 	}
 	if (keycode == KEY_BACKSPACE && f->fractal.type)
 	{
 		mlx_clear_window(f->mlx.init, f->mlx.win);
 		f->fractal.type = 0;
+	}
+}
+
+void	move_fractal(int keycode, t_fractol *f)
+{
+	if (f->fractal.type == 1 || f->fractal.type == 2)
+	{
+		if (keycode == KEY_UP)
+			f->fractal.center.im += 0.1 * f->fractal.ratio;
+		else if (keycode == KEY_DOWN)
+			f->fractal.center.im -= 0.1 * f->fractal.ratio;
+		else if (keycode == KEY_LEFT)
+			f->fractal.center.re += 0.1 * f->fractal.ratio;
+		else if (keycode == KEY_RIGHT)
+			f->fractal.center.re -= 0.1 * f->fractal.ratio;
 	}
 }
 
@@ -62,5 +77,6 @@ int	control_keys(int keycode, t_fractol *f)
 		add_info_menu(f);
 	}
 	more_key_control(keycode, f);
+	move_fractal(keycode, f);
 	return (0);
 }

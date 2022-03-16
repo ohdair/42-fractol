@@ -6,7 +6,7 @@
 #    By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/14 13:39:50 by jaewpark          #+#    #+#              #
-#    Updated: 2022/03/14 17:41:16 by jaewpark         ###   ########.fr        #
+#    Updated: 2022/03/16 20:10:00 by jaewpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,22 +83,29 @@ $(NAME): $(OBJ)
 	@echo "\033[01;31m⎹⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵⎵\
 	⎵⎵⎵⎵⎵⎵⎵⎵⎵⎸"
 	@echo
-	@echo "\033[07;37m    Fractol Usage                   \033[0m"
+	@echo "\033[07;37m   MENU USAGE   \033[0m"
 	@echo "\033[01;36m   Keys  : [ESC]       -> Exit      \033[0m"
 	@echo "\033[01;36m   Keys  : [W, S]      -> Select      \033[0m"
-	@echo "\033[01;36m   Keys  : [R]         -> Random      \033[0m"
 	@echo "\033[01;36m   Keys  : [Enter]     -> Show Fract-ol\033[0m"
-	@echo "\033[01;36m   Keys  : [BACKSPACE] -> Show Menu\033[0m"
-	@echo "\033[01;36m   Keys  : [SPACE]     -> Colorize  \033[0m"
-	@echo "\033[01;36m   Mouse : [SCROLL]    -> Zoom      \033[0m"
-	@echo "\033[01;36m   Mouse : [R-Click]   -> Colorize \033[0m"
-	@echo "\033[01;36m   Mouse : [L-Click]   -> Freeze / Activate \033[0m"
+	@echo "\033[01;36m   Keys  : [BACKSPACE] -> Return Menu\033[0m"
+	@echo
+	@echo "\033[07;37m   JULIA & MANDELBROT USAGE   \033[0m"
+	@echo "\033[01;36m   Mouse : [L-Click]    -> Freeze / Activate \033[0m \
+	\033[01;33m [JULIA] \033[0m"
+	@echo "\033[01;36m   Mouse :  Moving      -> Change            \033[0m \
+	\033[01;33m [JULIA] \033[0m"
+	@echo "\033[01;36m   Mouse : [R-Click]    -> Colorize \033[0m"
+	@echo "\033[01;36m   Mouse : [SCROLL]     -> Zoom      \033[0m"
+	@echo "\033[01;36m   Keys  : [↑, ↓, →, ←] -> Move      \033[0m"
+	@echo
+	@echo "\033[07;37m   SECRET USAGE   \033[0m"
+	@echo "\033[01;36m   Keys  : [R]         -> Random      \033[0m"
 
 # clean rule
 clean:
 	@rm -Rf $(OBJ_DIR)
 	@make -C $(MINLBX_DIR) clean
-	@echo "═════════•°• Objects generated •°•═════════"
+	@echo "═════════•°• Objects removed •°•═════════"
 
 # fclean rule
 fclean: clean

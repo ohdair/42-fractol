@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 15:51:12 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/16 15:39:03 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/16 20:42:47 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,14 @@
 
 void	initialize_limits(t_fractol *f)
 {
-	f->fractal.c = redefine(0.0, 0.0);
-	f->fractal.cj = redefine(-0.4, 0.6);
+	f->fractal.cj = redefine(-0.7, -0.27015);
+	f->fractal.center = redefine(0.0, 0.0);
+	f->fractal.ratio = 4.0;
+	f->fractal.pixel = WIDTH / f->fractal.ratio;
+	f->fractal.c = redefine(WIDTH / f->fractal.pixel, \
+					HEIGHT / f->fractal.pixel);
 	f->mouse.press = 0;
+	f->fractal.shift = 0;
 }
 
 void	add_info_menu(t_fractol *f)

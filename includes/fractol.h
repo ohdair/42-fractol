@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 20:43:07 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/16 15:45:50 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/16 20:12:07 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@
 
 # include "mlx.h"
 
-# define WIN_WIDTH	1000
-# define WIN_HEIGHT	1000
-# define LIMIT	47
+# define WIDTH	1000
+# define HEIGHT	1000
+# define LIMIT	142
+# define ZOOM	1.20
+
 
 typedef struct s_coordinate
 {
@@ -42,11 +44,11 @@ typedef struct s_mlx
 typedef struct s_type
 {
 	int		type;
-	int		depth;
 	int		iteration;
-	int		limit;
-	t_coordinate	max;
-	t_coordinate	min;
+	int		shift;
+	double			ratio;
+	double			pixel;
+	t_coordinate	center;
 	t_coordinate	c;
 	t_coordinate	cj;
 }t_type;

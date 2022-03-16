@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 13:39:07 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/16 15:44:42 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/16 20:41:08 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void	reset_background(t_fractol *f)
 	int	y;
 
 	y = 0;
-	while (y < WIN_HEIGHT)
+	while (y < HEIGHT)
 	{
 		x = 0;
-		while (x < WIN_WIDTH)
+		while (x < WIDTH)
 		{
 			my_mlx_pixel_put(f, x, y, 0);
 			x++;
@@ -44,15 +44,44 @@ void	rand_color(t_fractol *f)
 					f->color.blue);
 }
 
+void	shift_color(t_fractol *f)
+{
+	int	t;
+
+	t = f->fractal.iteration;
+	if (f->fractal.shift == 1)
+	{
+		if (f->fractal.iteration < LIMIT)
+		{
+			f->color.red = 255;
+			f->color.green = t * t % 255;
+			f->color.blue = t * t * t % 128;
+		}
+	}
+	if (f->fractal.shift == 2)
+	{
+		if (f->fractal.iteration < LIMIT)
+		{
+			f->color.red = t * t * t % 128;
+			f->color.green = t * t % 255;
+			f->color.blue = 255;
+		}
+	}
+}
+
 int	initialize_color(t_fractol *f)
 {
-	if (f->fractal.iteration < LIMIT)
+	if (f->fractal.shift == 0)
 	{
-		f->color.red = 0;
-		f->color.green = 0;
-		f->color.blue = 0;
+		if (f->fractal.iteration < LIMIT)
+		{
+			f->color.red = 100;
+			f->color.green = 100;
+			f->color.blue = 100;
+		}
 	}
-	else
+	shift_color(f);
+	if (f->fractal.iteration == LIMIT)
 	{
 		f->color.red = 255;
 		f->color.green = 255;
