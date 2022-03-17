@@ -6,12 +6,18 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 17:32:49 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/16 20:09:47 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/17 18:15:33 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "usagekeys.h"
 #include "fractol.h"
+
+int	destroy(void)
+{
+	exit(1);
+	return (1);
+}
 
 void	more_key_control(int keycode, t_fractol *f)
 {
@@ -59,7 +65,7 @@ void	move_fractal(int keycode, t_fractol *f)
 int	control_keys(int keycode, t_fractol *f)
 {
 	if (keycode == KEY_ESC)
-		exit(1);
+		destroy();
 	if (keycode == KEY_R)
 		rand_color(f);
 	if (keycode == KEY_S && f->fractal.type == 0)

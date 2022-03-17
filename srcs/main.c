@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 19:35:30 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/17 15:34:45 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/17 18:13:22 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(void)
 			&(f->image.size), &(f->image.endian));
 	mlx_hook(f->mlx.win, 2, 0, control_keys, f);
 	mlx_hook(f->mlx.win, 4, 0, control_mouse, f);
+	mlx_hook(f->mlx.win, 17, 0, destroy, f);
 	mlx_loop_hook(f->mlx.init, render_next_frame, f);
 	mlx_loop(f->mlx.init);
 	return (0);

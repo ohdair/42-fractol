@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 20:43:07 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/17 11:40:17 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/17 18:15:48 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ void			init_fern_fractal(t_fractol *f);
 void			fern_fractal(t_fractol *f);
 void			fern_create_pixels(t_fractol *f);
 
+int				destroy(void);
 int				control_keys(int keycode, t_fractol *f);
 int				control_mouse(int mousecode, int x, int y, t_fractol *f);
 int				control_julia(int x, int y, t_fractol *f);
