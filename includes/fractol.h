@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 20:43:07 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/16 20:12:07 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/17 11:40:17 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,8 @@
 
 # define WIDTH	1000
 # define HEIGHT	1000
-# define LIMIT	142
+# define LIMIT	128
 # define ZOOM	1.20
-
 
 typedef struct s_coordinate
 {
@@ -43,9 +42,9 @@ typedef struct s_mlx
 
 typedef struct s_type
 {
-	int		type;
-	int		iteration;
-	int		shift;
+	int				type;
+	int				iteration;
+	int				shift;
 	double			ratio;
 	double			pixel;
 	t_coordinate	center;

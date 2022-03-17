@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 13:39:07 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/16 20:41:08 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/17 11:47:54 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,18 @@ void	shift_color(t_fractol *f)
 	{
 		if (f->fractal.iteration < LIMIT)
 		{
-			f->color.red = 255;
-			f->color.green = t * t % 255;
-			f->color.blue = t * t * t % 128;
+			f->color.red = sin(0.3 * (double)t) + 64;
+			f->color.green = sin(0.3 * (double)t + 3) * 127 + 128;
+			f->color.blue = sin(0.3 * (double)t + 2) * 127 + 128;
 		}
 	}
 	if (f->fractal.shift == 2)
 	{
 		if (f->fractal.iteration < LIMIT)
 		{
-			f->color.red = t * t * t % 128;
-			f->color.green = t * t % 255;
-			f->color.blue = 255;
+			f->color.red = sin(0.3 * (double)t + 2) * 127 + 128;
+			f->color.green = sin(0.3 * (double)t + 3) * 127 + 128;
+			f->color.blue = sin(0.3 * (double)t) + 64;
 		}
 	}
 }
@@ -75,17 +75,17 @@ int	initialize_color(t_fractol *f)
 	{
 		if (f->fractal.iteration < LIMIT)
 		{
-			f->color.red = 100;
-			f->color.green = 100;
-			f->color.blue = 100;
+			f->color.red = 255;
+			f->color.green = 255;
+			f->color.blue = 255;
 		}
 	}
 	shift_color(f);
 	if (f->fractal.iteration == LIMIT)
 	{
-		f->color.red = 255;
-		f->color.green = 255;
-		f->color.blue = 255;
+		f->color.red = 0;
+		f->color.green = 0;
+		f->color.blue = 0;
 	}
 	f->color.color = create_trgb(0, f->color.red, f->color.green, \
 					f->color.blue);
