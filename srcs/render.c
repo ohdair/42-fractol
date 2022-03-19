@@ -6,7 +6,7 @@
 /*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 17:05:41 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/03/17 18:13:58 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/03/19 17:44:14 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	render_next_frame(t_fractol *f)
 	if (f->fractal.type == 1 || f->fractal.type == 2)
 	{
 		mlx_clear_window(f->mlx.init, f->mlx.win);
+		mlx_hook(f->mlx.win, 4, 0, control_mouse, f);
 		if (f->fractal.type == 1)
 			mlx_hook(f->mlx.win, 6, 0, control_julia, f);
 		draw_fractal(f);
